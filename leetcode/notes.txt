@@ -1,0 +1,24 @@
+x = [[1,2],[2,3],[3,4]]
+zip(*x) = [(1,2,3),(2,3,4)]
+
+is_even :
+if x & 1 == 0
+
+split a int A:
+[int(x) for x in str(A)]
+
+fill blank with zero:
+x = 1
+bin(x)[2:].zfill(len(you_want))
+
+max() out of loop!!!!
+
+use ord() to operate letters
+
+dictionary!
+
+101 -> 010
+bit ^ 1
+    
+binary -> decimal:
+int(binary_string,2)
