@@ -1,0 +1,113 @@
+n = 0
+while n < 10:
+    n = n + 1
+    if n % 2 == 0: # 如果n是偶数，执行continue语句
+        continue # continue语句会直接继续下一轮循环，后续的print()语句不会执行
+    print(n)
+    
+    
+n = 1
+while n <= 100:
+    if n > 10: # 当n = 11时，条件满足，执行break语句
+        break # break语句会结束当前循环
+    print(n)
+    n = n + 1
+print('END')
+
+>>> d = {'Michael': 95, 'Bob': 75, 'Tracy': 85}
+>>> d['Michael']
+95
+
+要避免key不存在的错误，有两种办法，一是通过in判断key是否存在：
+>>> 'Thomas' in d
+False
+二是通过dict提供的get()方法，如果key不存在，可以返回None，或者自己指定的value：
+>>> d.get('Thomas')
+>>> d.get('Thomas', -1)
+-1
+
+要删除一个key，用pop(key)方法，对应的value也会从dict中删除：
+>>> d.pop('Bob')
+75
+>>> d
+{'Michael': 95, 'Tracy': 85}
+
+切片操作十分有用。我们先创建一个0-99的数列：
+>>> L = list(range(100))
+>>> L
+[0, 1, 2, 3, ..., 99]
+可以通过切片轻松取出某一段数列。比如前10个数：
+>>> L[:10]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+后10个数：
+>>> L[-10:]
+[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+前11-20个数：
+>>> L[10:20]
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+前10个数，每两个取一个：
+>>> L[:10:2]
+[0, 2, 4, 6, 8]
+所有数，每5个取一个：
+>>> L[::5]
+[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+
+如何判断一个对象是可迭代对象呢？方法是通过collections模块的Iterable类型判断：
+>>> from collections import Iterable
+>>> isinstance('abc', Iterable) # str是否可迭代
+True
+>>> isinstance([1,2,3], Iterable) # list是否可迭代
+True
+>>> isinstance(123, Iterable) # 整数是否可迭代
+False
+
+
+n.pop(index) will remove the item at index from the list and return it to you:
+n = [1, 3, 5]
+n.pop(1)
+# Returns 3 (the item at index 1)
+print n
+# prints [1, 5]
+n.remove(item) will remove the actual item if it finds it:
+n.remove(1)
+# Removes 1 from the list,
+# NOT the item at index 1
+print n
+# prints [3, 5]
+del(n[1]) is like .pop in that it will remove the item at the given index, but it won't return it:
+del(n[1])
+# Doesn't return anything
+print n
+# prints [1, 5]
+
+range(6) # => [0, 1, 2, 3, 4, 5]
+range(1, 6) # => [1, 2, 3, 4, 5]
+range(1, 6, 3) # => [1, 4]
+The range function has three different versions:
+range(stop)
+range(start, stop)
+range(start, stop, step)
+
+String manipulation is useful in for loops if you want to modify some content in a string.
+word = "Marble"
+for char in word:
+  print char,
+The example above iterates through each character in word and, in the end, prints out M a r b l e.
+The , character after our print statement means that our next print statement keeps printing on the same line.
+
+A weakness of using this for-each style of iteration is that you don't know the index of the thing you're looking at. 
+Generally this isn't an issue, but at times it is useful to know how far into the list you are. 
+Thankfully the built-in enumerate function helps with this.
+enumerate works by supplying a corresponding index to each element in the list that you pass it.
+Each time you go through the loop, index will be one greater, and item will be the next item in the sequence. 
+It's very similar to using a normal for loop with a list, except this gives us an easy way to count how many items we've seen so far.
+eg:
+choices = ['pizza', 'pasta', 'salad', 'nachos']
+print 'Your choices are:'
+for index, item in enumerate(choices):           ////             for index, item in enumerate(choices,1):
+  print index + 1, item                          ////               print index, item
+Your choices are:
+1 pizza
+2 pasta
+3 salad
+4 nachos
